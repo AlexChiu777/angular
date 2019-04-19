@@ -1,2 +1,2 @@
 # angular
-learning angular7
+My learning angular7
