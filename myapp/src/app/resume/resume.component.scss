@@ -1,0 +1,47 @@
+div.content{text-align: center; width:100%; }
+div.content-header { margin-left: 10%}
+
+.jumbo-title {
+  text-align: center;
+}
+
+.resume-link {
+  color:#007bff !important;
+}
+
+.card {
+  min-width: 80%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 80%;
+}
+
+table {
+  margin: 0 auto;
+  
+}
+
+a {
+  cursor:pointer;
+}
+
+
+.icon {
+  display: inline-block;
+  height: 30px;
+  margin: 0 auto;
+  padding-right: 30px;
+  text-align: center;
+  vertical-align: middle;
+  width: 15%;
+}
+
+.label {
+  line-height: 30px;
+  margin: 0;
+  width: 85%;
+}

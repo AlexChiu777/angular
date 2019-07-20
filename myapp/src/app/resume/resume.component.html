@@ -1,0 +1,130 @@
+<br />
+<div class="jumbotron jumbo-title">
+  <h1 class="display-4">Alex Chiu</h1>
+  <p class="lead">
+    Experienced Software Engineer & Developer
+  </p>
+
+  <table>
+    <tr>
+        <td>
+            <mat-icon class="icon iconpad">phone</mat-icon>
+            <span class="label">(416) 457-3208</span>
+        </td>
+        <td>
+                <mat-icon class="icon">email</mat-icon>
+                <span class="label">alex.kl.chiu@gmail.com</span>
+        </td>
+    </tr>
+
+  </table>
+        
+
+  <hr class="my-4" />
+
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a
+        class="nav-link resume-link"
+        (click)="toggle('Summary')"
+        [ngStyle]="{ 'font-weight': showSummary ? 900 : normal }"
+        >Summary</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link resume-link"
+        (click)="toggle('TechProf')"
+        [ngStyle]="{ 'font-weight': showTechProf ? 900 : normal }"
+        >Technical Proficiency</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link resume-link"
+        (click)="toggle('WorkExp')"
+        [ngStyle]="{ 'font-weight': showWorkExp ? 900 : normal }"
+        >Work Experiences</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link resume-link"
+        (click)="toggle('AcadQual')"
+        [ngStyle]="{ 'font-weight': showAcadQual ? 900 : normal }"
+        >Academic Qualifications</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link  resume-link"
+        (click)="toggle('Ref')"
+        [ngStyle]="{ 'font-weight': showReference ? 900 : normal }"
+        >References</a
+      >
+    </li>
+  </ul>
+</div>
+
+<div class="content-body">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div class="item item-2 content">
+      <mat-card class="card">
+        <div *ngIf="showSummary">
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>Summary</h3>
+          </mat-card-title>
+          <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+              <resume-summary></resume-summary>
+            </div>
+          </mat-card-content>
+        </div>
+
+        <div *ngIf="showTechProf">
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>Technical Proficiency</h3>
+          </mat-card-title>
+          <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+              <resume-tech-prof></resume-tech-prof>
+            </div>
+          </mat-card-content>
+        </div>
+
+        <div *ngIf="showWorkExp">
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>Work Experience</h3>
+          </mat-card-title>
+          <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+              <resume-work-exp></resume-work-exp>
+            </div>
+          </mat-card-content>
+        </div>
+
+        <div *ngIf="showAcadQual">
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>Academic Qualifications</h3>
+          </mat-card-title>
+          <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+              <resume-acad-qual></resume-acad-qual>
+            </div>
+          </mat-card-content>
+        </div>
+
+        <div *ngIf="showReference">
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>References</h3>
+          </mat-card-title>
+          <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+              <resume-references></resume-references>
+            </div>
+          </mat-card-content>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
