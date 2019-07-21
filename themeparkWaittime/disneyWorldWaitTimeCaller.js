@@ -1,5 +1,5 @@
 // include the Themeparks library
-const Themeparks = require("themeparks");
+var Themeparks = require("themeparks");
 
 // configure where SQLite DB sits
 // optional - will be created in node working directory if not configured
@@ -13,6 +13,9 @@ const DisneyWorldEpcot = new Themeparks.Parks.WaltDisneyWorldEpcot();
 const DisneyWorldAnimalKingdom = new Themeparks.Parks.WaltDisneyWorldAnimalKingdom();
 const DisneyWorldHollywoodStudios = new Themeparks.Parks.WaltDisneyWorldHollywoodStudios();
 
+//change cacheWaitTime - 30 secs
+//Themeparks.Settings.CacheWaitTimesLength = 30;
+
 
 
 // Access wait times by Promise
@@ -23,13 +26,13 @@ function GetWaitTimes(park) {
                 resolve(rideTimes);
             }).catch((error) => {
                 console.error(error);
-            });
+            })
         } else if (park === 'DisneyWorldEpcot') {
             DisneyWorldEpcot.GetWaitTimes().then((rideTimes) => {
                 resolve(rideTimes);
             }).catch((error) => {
                 console.error(error);
-            });
+            })
         } else if (park === 'DisneyWorldAnimalKingdom') {
             DisneyWorldAnimalKingdom.GetWaitTimes().then((rideTimes) => {
                 resolve(rideTimes);
@@ -38,13 +41,13 @@ function GetWaitTimes(park) {
                 // });
             }).catch((error) => {
                 console.error(error);
-            });
+            })
         } else if (park === 'DisneyWorldHollywoodStudios') {
             DisneyWorldHollywoodStudios.GetWaitTimes().then((rideTimes) => {
                 resolve(rideTimes);
             }).catch((error) => {
                 console.error(error);
-            });
+            })
         }
     });
 };  
@@ -82,8 +85,11 @@ function GetOpeningTimes(park) {
     });
 };  
 
-// GetWaitTimes('DisneyWorldHollywoodStudios').then(data=>{
+// GetWaitTimes('DisneyWorldMagicKingdom').then(data=>{
 //     console.log(data);
+//     data.forEach((ride) => {
+//                     console.log(`${ride.name}: ${ride.waitTime} minutes wait (${ride.status})`);
+//                 });
 // });
 
 module.exports = {

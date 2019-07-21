@@ -1,4 +1,13 @@
+// Need to reserve your favorite restaurant at Disney World but frustrated with the reservation system? Always dream to dine at Be our Guest/ Cinderella's Royal Table/ Ohana/ etc? Never miss another reservation time with email alerts, by providing the following:
 
+// 1. Which date you plan to visit Disney World and the restaurant of choice
+// 2. What is your preferred time to dine
+// 3. Provide an email for the alerts
+// 4. Sit back and enjoy until your reservation times are found
+
+// Don't like your reserved time? No problem, alerts can constantly look for new time even if you already booked a restaurant.
+
+// Contact me for more details.
 
 const dateFormat = require('dateformat');
 
@@ -18,17 +27,15 @@ var datetime = new Date();
 var dateString = formatDate(datetime);
 
 
-
-
-
-var dataPromise = Promise.all([disneySchedule.getOpeningTimes('DisneyWorldMagicKingdom')
-,disneySchedule.getWaitTimes('DisneyWorldMagicKingdom')
-,disneySchedule.getOpeningTimes('DisneyWorldAnimalKingdom'), disneySchedule.getWaitTimes('DisneyWorldAnimalKingdom'), 
-disneySchedule.getOpeningTimes('DisneyWorldEpcot'),disneySchedule.getWaitTimes('DisneyWorldEpcot'), 
-disneySchedule.getOpeningTimes('DisneyWorldHollywoodStudios'), disneySchedule.getWaitTimes('DisneyWorldHollywoodStudios')
-]);
-
 const AutoWaitTimeMailer = () => {
+    //calls the promise
+    var dataPromise = Promise.all([disneySchedule.getOpeningTimes('DisneyWorldMagicKingdom')
+    ,disneySchedule.getWaitTimes('DisneyWorldMagicKingdom')
+    ,disneySchedule.getOpeningTimes('DisneyWorldAnimalKingdom'), disneySchedule.getWaitTimes('DisneyWorldAnimalKingdom'), 
+    disneySchedule.getOpeningTimes('DisneyWorldEpcot'),disneySchedule.getWaitTimes('DisneyWorldEpcot'), 
+    disneySchedule.getOpeningTimes('DisneyWorldHollywoodStudios'), disneySchedule.getWaitTimes('DisneyWorldHollywoodStudios')
+    ]);
+
     dataPromise.then(function(dataArray) {
         let emailTableContents = [];
         let openingTimeContent = "";   //park opening times 
@@ -112,13 +119,15 @@ const AutoWaitTimeMailer = () => {
         emailClient.sendMail('Walt Disney World Attraction WaitTime - ' + dateString, htmlContent);
     }).catch(function(error) {
         console.log(error);
-    }).then(() => {
-        setTimeout(AutoWaitTimeMailer, 1000 * 60 * 15); // refresh every 15 mins
     })
 };
 
-//start
-AutoWaitTimeMailer();
+AutoWaitTimeMailer()
+//start - update and email every 5 mins
+var intervalID = setInterval(function() {
+    AutoWaitTimeMailer();
+}, 1000 * 60 * 15);
+
 
 function formatDate(date) {
     var d = new Date(date),
